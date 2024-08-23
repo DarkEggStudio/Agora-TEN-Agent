@@ -1,45 +1,52 @@
-
+![Astra banner image](https://github.com/TEN-framework/docs/blob/main/assets/imgs/astra-banner.jpg?raw=true)
 <div align="center">
 
-[![Follow on X](https://img.shields.io/twitter/follow/ten_platform?logo=X&color=%20%23f5f5f5)](https://twitter.com/intent/follow?screen_name=ten_platform)
-[![Discussion posts](https://img.shields.io/github/discussions/rte-design/astra.ai?labelColor=%20%23FDB062&color=%20%23f79009)](https://github.com/rte-design/astra.ai/discussions/)
-[![Commits](https://img.shields.io/github/commit-activity/m/rte-design/astra.ai?labelColor=%20%237d89b0&color=%20%235d6b98)](https://github.com/rte-design/astra.ai/graphs/commit-activity)
-[![Issues closed](https://img.shields.io/github/issues-search?query=repo%3Arte-design%2Fastra.ai%20is%3Aclosed&label=issues%20closed&labelColor=green&color=green)](https://github.com/rte-design/ASTRA.ai/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/rte-design/ASTRA.ai/pulls)
-[![GitHub license](https://img.shields.io/badge/License-Apache_2.0-blue.svg?labelColor=%20%239b8afb&color=%20%237a5af8)](https://github.com/rte-design/ASTRA.ai/blob/main/LICENSE)
-[![WeChat](https://img.shields.io/badge/WeChat-WeChat_Group-%2307C160?logo=wechat)](https://github.com/rte-design/ASTRA.ai/discussions/170)
+[![Follow on X](https://img.shields.io/twitter/follow/AstraAIAgent?logo=X&color=%20%23f5f5f5)](https://twitter.com/intent/follow?screen_name=AstraAIAgent)
+![Product fee](https://img.shields.io/badge/pricing-free-blue.svg?labelColor=%20%239b8afb&color=%20%237a5af8)
+[![Discussion posts](https://img.shields.io/github/discussions/TEN-framework/astra.ai?labelColor=%20%23FDB062&color=%20%23f79009)](https://github.com/TEN-framework/astra.ai/discussions/)
+[![Commits](https://img.shields.io/github/commit-activity/m/TEN-framework/astra.ai?labelColor=%20%237d89b0&color=%20%235d6b98)](https://github.com/TEN-framework/astra.ai/graphs/commit-activity)
+[![Issues closed](https://img.shields.io/github/issues-search?query=repo%3ATEN-framework%2Fastra.ai%20is%3Aclosed&label=issues%20closed&labelColor=green&color=green)](https://github.com/TEN-framework/ASTRA.ai/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/TEN-framework/ASTRA.ai/pulls)
+[![GitHub license](https://img.shields.io/badge/License-Apache_2.0-blue.svg?labelColor=%20%239b8afb&color=%20%237a5af8)](https://github.com/TEN-framework/ASTRA.ai/blob/main/LICENSE)
+[![WeChat](https://img.shields.io/badge/WeChat-WeChat_Group-%2307C160?logo=wechat)](https://github.com/TEN-framework/ASTRA.ai/discussions/170)
 
 [![Discord](https://dcbadge.vercel.app/api/server/VnPftUzAMJ)](https://discord.gg/VnPftUzAMJ)
 
-[![GitHub watchers](https://img.shields.io/github/watchers/rte-design/astra.ai?style=social&label=Watch)](https://GitHub.com/rte-design/astra.ai/watchers/?WT.mc_id=academic-105485-koreyst)
-[![GitHub forks](https://img.shields.io/github/forks/rte-design/astra.ai?style=social&label=Fork)](https://GitHub.com/rte-design/astra.ai/network/?WT.mc_id=academic-105485-koreyst)
-[![GitHub stars](https://img.shields.io/github/stars/rte-design/astra.ai?style=social&label=Star)](https://GitHub.com/rte-design/astra.ai/stargazers/?WT.mc_id=academic-105485-koreyst)
+[![GitHub watchers](https://img.shields.io/github/watchers/TEN-framework/astra.ai?style=social&label=Watch)](https://GitHub.com/TEN-framework/astra.ai/watchers/?WT.mc_id=academic-105485-koreyst)
+[![GitHub forks](https://img.shields.io/github/forks/TEN-framework/astra.ai?style=social&label=Fork)](https://GitHub.com/TEN-framework/astra.ai/network/?WT.mc_id=academic-105485-koreyst)
+[![GitHub stars](https://img.shields.io/github/stars/TEN-framework/astra.ai?style=social&label=Star)](https://GitHub.com/TEN-framework/astra.ai/stargazers/?WT.mc_id=academic-105485-koreyst)
 
-<a href="../../README.md"><img alt="README in English" src="https://img.shields.io/badge/English-lightgrey"></a>
-<a href="../readmes/README-CN.md"><img alt="简体中文" src="https://img.shields.io/badge/简体中文-lightgrey"></a>
+<a href="https://github.com/TEN-framework/ASTRA.ai/blob/main/README.md"><img alt="README in English" src="https://img.shields.io/badge/English-lightgrey"></a>
+<a href="https://github.com/ten-framework/astra.ai/blob/main/docs/readmes/README-CN.md"><img alt="简体中文操作指南" src="https://img.shields.io/badge/简体中文-lightgrey"></a>
+<a href="https://github.com/ten-framework/astra.ai/blob/main/docs/readmes/README-JP.md"><img alt="日本語のREADME" src="https://img.shields.io/badge/日本語-lightgrey"></a>
+<a href="https://github.com/ten-framework/astra.ai/blob/main/docs/readmes/README-KR.md"><img alt="README in 한국어" src="https://img.shields.io/badge/한국어-lightgrey"></a>
+<a href="https://github.com/ten-framework/astra.ai/blob/main/docs/readmes/README-ES.md"><img alt="README en Español" src="https://img.shields.io/badge/Español-lightgrey"></a>
+<a href="https://github.com/ten-framework/astra.ai/blob/main/docs/readmes/README-FR.md"><img alt="README en Français" src="https://img.shields.io/badge/Français-lightgrey"></a>
+<a href="https://github.com/ten-framework/astra.ai/blob/main/docs/readmes/README-IT.md"><img alt="README in Italiano" src="https://img.shields.io/badge/Italiano-lightgrey"></a>
+
 </div>
 
 <div align="center">
 
-[文档](https://astra-9.gitbook.io/ten-platform)
+[文档](https://doc.theten.ai)
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-[快速开始](https://astra-9.gitbook.io/ten-platform/getting-started/quickstart)
+[快速开始](https://doc.theten.ai/getting-started/quickstart)
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-[教程](https://app.gitbook.com/o/we7IoLK5sA6RQzhItfkW/s/4KgjqM5ChU0dSGjTLZmG/~/changes/6/tutorials/how-to-build-extension-with-go)
+[教程](https://doc.theten.ai/getting-started/create-a-hello-world-extension)
 
 
 </div>
 
 <br>
 
-## Astra 语音助手
+## Astra AI agent
 
-[Astra voice agent](https://theastra.ai) 是通过 TEN 搭建出来的 voice agent, 展示了多模态，低延迟的能力。
+[Astra AI agent](https://theastra.ai) 是通过 TEN 搭建出来的 multimodal AI agent, 展示了其多模态，低延迟的能力。
 
-[![Showcase Astra voice agent](https://github.com/rte-design/docs/blob/main/assets/gifs/astra-voice-agent.gif?raw=true)](https://theastra.ai)
+[![Showcase Astra voice agent](https://github.com/TEN-framework/docs/blob/main/assets/gifs/astra-voice-agent.gif?raw=true)](https://theastra.ai)
 
 <br>
-<h2>如何用搭建的 graph designer 配置 voice agent</h2>
+<h2>如何本地搭建 Astra AI agent</h2>
 
 ### 先决条件
 #### Keys 
@@ -58,88 +65,104 @@
 
 <div align="center">
 
-![Docker Setting](https://github.com/rte-design/docs/blob/main/assets/gifs/docker-setting.gif?raw=true)
+![Docker Setting](https://github.com/TEN-framework/docs/blob/main/assets/gifs/docker-setting.gif?raw=true)
 
 </div>
 
-#### 设置 Go 国内代理
-如果在国内，我们建议跑下列命令来全局设定国内代理以便快速下载依赖([了解详情](https://goproxy.cn/))。
+
+#### 设置国内代理
+
+如果在国内，我们强烈建议在 SSH 中把代理打开，下载和安装的依赖的时候会更加丝滑。
+
 
 ```bash
- export GOPROXY=https://goproxy.cn 
+# 如果用的代理软件没有增强模式的话， 建议手动把所有代理协议都打开
+# export 的有效期为一个 session
+export https_proxy=http://127.0.0.1:（端口例如 7890） 
+export http_proxy=http://127.0.0.1:（端口例如 7890） 
+export all_proxy=socks5://127.0.0.1:（端口例如 7890）
+
+# Docker
+export https_proxy=http://host.docker.internal:（端口例如 7890）
+export http_proxy=http://host.docker.internal:（端口例如 7890）
+export all_proxy=http://host.docker.internal:（端口例如 7890）
+
+# GO 代理设置
+export GOPROXY=https://goproxy.cn,direct
+
+# pip 代理设置, 此设置需要先安装 pip
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ### 下一步
-#### 1. 准备设置文件
-Clone 项目后，在根目录下跑下面的命创建 `property.json` 和 `.env`:
+#### 1. 创建配置文件
+克隆项目后，在根目录下跑下面的命创建 `property.json` 和 `.env`:
 ```bash
-# 创建 .env 文件
 cp ./.env.example ./.env
-
-# 创建 property.json 文件
 cp ./agents/property.json.example ./agents/property.json
 ```
 
-#### 2. 绑定积木的 keys 
-打开 `.env` 文件，绑定对应的积木 keys，这里可以通过配置不同的 keys 选用不用的积木：
+#### 2. 绑定 extension 的 keys 
+打开 `.env` 文件，绑定对应的 `keys`，这里也可以通过配置不同的 `keys` 选用不用的 `extensions`：
 ```
-# Agora App ID and Agora App Certificate
+# Agora app ID
 AGORA_APP_ID=
+# Certificate 非必须，只有在申请 Agora app ID 的时候申请了才需要填
+# 如果不知道 certificate 是什么, 请留空
 AGORA_APP_CERTIFICATE=
 
-# Extension: agora_rtc
 # Azure STT key and region
 AZURE_STT_KEY=
 AZURE_STT_REGION=
 
-# Extension: azure_tts
 # Azure TTS key and region
 AZURE_TTS_KEY=
 AZURE_TTS_REGION=
 
-# Extension: openai_chatgpt
 # OpenAI API key
 OPENAI_API_KEY=
 ```
 
-#### 3. 开启 Docker 容器
-在同一个目录下，通过 Docker 镜像构建 Docker 容器：
+#### 3. 创建 Docker 容器
+在根目录下，拉取 Docker 镜像，然后创建 Docker 容器:
 ```bash
-# 开启 Docker 容器：
 docker compose up
 ```
 
-#### 4. 构建 Agent 并开启服务
-再打开一个 Terminal 窗口，通过下面的命令进入 Docker 容器，创建并开启服务：
+#### 4. 在容器内创建 agent 服务
+再打开一个 Terminal 窗口，通过下面的命令进入 Docker 容器，创建 agent 服务：
 ```bash
-#  进入容器创建 Agent
+#  进入容器创建 agent
 docker exec -it astra_agents_dev bash
-make build
 
-# 端口 8080 开启服务
+make build
+```
+
+#### 5.开启服务
+```bash
 make run-server
 ```
 
 ### 构建完成 🎉
 
-走到这里就本地构建完成了，简单 4 步，上手体验拉满！
+走到这里就本地构建完成了，简单 5 步，上手体验拉满！
 
 #### 验证 Astra voice agent 
 
-现在可以打开浏览器 `localhost:3000` 体验 voice agent。
+现在可以打开浏览器 http://localhost:3000 体验 Astra voice agent
 
 #### 验证 Graph designer
 
-同时可以再开一个 tab 在 `localhost:3001` 体验 TEN Graph Designer (beta)，通过简单拖拽和动态节点连接轻松定制 Astra voice agent。
+同时可以再开一个 tab 在 http://localhost:3001 体验 Graph Designer (beta)，通过简单拖拽和动态节点连接轻松定制 Astra voice agent。
 
-![TEN Graph Designer](https://github.com/rte-design/docs/blob/main/assets/gifs/graph-designer.gif?raw=true)
+![TEN Graph Designer](https://github.com/TEN-framework/docs/blob/main/assets/gifs/graph-designer.gif?raw=true)
 
 <br>
 <h2>点星收藏</h2>
 
 我们更新频繁，不想错过的话，请给我们的 repo 点星，以便获得第一时间的更新.
 
-![TEN star us gif](https://github.com/rte-design/docs/blob/main/assets/gifs/star-the-repo-confetti-higher-quality.gif?raw=true)
+![TEN star us gif](https://github.com/TEN-framework/docs/blob/main/assets/gifs/star-the-repo-confetti-higher-quality.gif?raw=true)
 
 
 
@@ -147,15 +170,16 @@ make run-server
 <h2>加入社区</h2>
 
 - [Discord](https://discord.gg/VnPftUzAMJ)：非常适合分享您的应用程序并与社区互动。
-- [WeChat Group](https://github.com/rte-design/ASTRA.ai/discussions/170): 如果喜欢用微信群的社区，欢迎加入。
-- [Github Discussion](https://github.com/rte-design/astra.ai/discussions)：非常适合提供反馈和提问。
-- [GitHub Issues](https://github.com/rte-design/astra.ai/issues)：最适合报告错误和提出新功能。有关更多详细信息，请参阅我们的[贡献指南](./docs/code-of-conduct/contributing.md)。
-- [X（以前的Twitter）](https://twitter.com/intent/follow?screen_name=ten_platform)：非常适合分享您的代理并与社区互动。
+- [WeChat Group](https://github.com/TEN-framework/ASTRA.ai/discussions/170): 如果喜欢用微信群的社区，欢迎加入。
+- [Github Discussion](https://github.com/TEN-framework/astra.ai/discussions)：非常适合提供反馈和提问。
+- [GitHub Issues](https://github.com/TEN-framework/astra.ai/issues)：最适合报告错误和提出新功能。有关更多详细信息，请参阅我们的[贡献指南](./docs/code-of-conduct/contributing.md)。
+- [X（以前的Twitter）](https://img.shields.io/twitter/follow/AstraAIAgent?logo=X&color=%20%23f5f5f5)：非常适合分享您的代理并与社区互动。
+
 
 <br>
  <h2>代码贡献者</h2>
 
-[![ASTRA](https://contrib.rocks/image?repo=rte-design/astra.ai)](https://github.com/rte-design/astra.ai/graphs/contributors)
+[![ASTRA](https://contrib.rocks/image?repo=TEN-framework/astra.ai)](https://github.com/TEN-framework/astra.ai/graphs/contributors)
 
 <br>
 <h2>欢迎贡献</h2>

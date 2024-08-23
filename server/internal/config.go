@@ -1,6 +1,8 @@
 package internal
 
-import "log/slog"
+import (
+	"log/slog"
+)
 
 type Prop struct {
 	ExtensionName string
@@ -9,29 +11,28 @@ type Prop struct {
 
 const (
 	// Extension name
-	extensionNameAgoraRTC      = "agora_rtc"
-	extensionNameBedrockLLM    = "bedrock_llm"
-	extensionNameAzureTTS      = "azure_tts"
-	extensionNameCosyTTS       = "cosy_tts"
-	extensionNameElevenlabsTTS = "elevenlabs_tts"
-	extensionNameLiteLLM       = "litellm"
-	extensionNameOpenaiChatgpt = "openai_chatgpt"
-	extensionNamePollyTTS      = "polly_tts"
-	extensionNameQwenLLM       = "qwen_llm"
-	extensionNameTranscribeAsr = "transcribe_asr"
+	extensionNameAgoraRTC                      = "agora_rtc"
+	extensionNameAzureTTS                      = "azure_tts"
+	extensionNameBedrockLLM                    = "bedrock_llm"
+	extensionNameCosyTTS                       = "cosy_tts"
+	extensionNameElevenlabsTTS                 = "elevenlabs_tts"
+	extensionNameGeminiLLM                     = "gemini_llm"
+	extensionNameLiteLLM                       = "litellm"
+	extensionNameOpenaiChatgpt                 = "openai_chatgpt"
+	extensionNamePollyTTS                      = "polly_tts"
+	extensionNameQwenLLM                       = "qwen_llm"
+	extensionNameTranscribeAsr                 = "transcribe_asr"
+	extensionNameHttpServer                    = "http_server"
+	extensionNameAliyunAnalyticdbVectorStorage = "aliyun_analyticdb_vector_storage"
+	extensionNameAliyunTextEmbedding           = "aliyun_text_embedding"
 
 	// Language
 	languageChinese = "zh-CN"
 	languageEnglish = "en-US"
-	// Default graph name
-	graphNameDefault = "va.openai.azure"
 	// Property json
 	PropertyJsonFile = "./agents/property.json"
 	// Token expire time
 	tokenExpirationInSeconds = uint32(86400)
-	// Voice type
-	voiceTypeMale   = "male"
-	voiceTypeFemale = "female"
 )
 
 var (
@@ -41,6 +42,33 @@ var (
 	EnvPropMap = map[string][]Prop{
 		"AGORA_APP_ID": {
 			{ExtensionName: extensionNameAgoraRTC, Property: "app_id"},
+		},
+		"ALIBABA_CLOUD_ACCESS_KEY_ID": {
+			{ExtensionName: extensionNameAliyunAnalyticdbVectorStorage, Property: "alibaba_cloud_access_key_id"},
+		},
+		"ALIBABA_CLOUD_ACCESS_KEY_SECRET": {
+			{ExtensionName: extensionNameAliyunAnalyticdbVectorStorage, Property: "alibaba_cloud_access_key_secret"},
+		},
+		"ALIYUN_ANALYTICDB_ACCOUNT": {
+			{ExtensionName: extensionNameAliyunAnalyticdbVectorStorage, Property: "adbpg_account"},
+		},
+		"ALIYUN_ANALYTICDB_ACCOUNT_PASSWORD": {
+			{ExtensionName: extensionNameAliyunAnalyticdbVectorStorage, Property: "adbpg_account_password"},
+		},
+		"ALIYUN_ANALYTICDB_INSTANCE_ID": {
+			{ExtensionName: extensionNameAliyunAnalyticdbVectorStorage, Property: "adbpg_instance_id"},
+		},
+		"ALIYUN_ANALYTICDB_INSTANCE_REGION": {
+			{ExtensionName: extensionNameAliyunAnalyticdbVectorStorage, Property: "adbpg_instance_region"},
+		},
+		"ALIYUN_ANALYTICDB_NAMESPACE": {
+			{ExtensionName: extensionNameAliyunAnalyticdbVectorStorage, Property: "adbpg_namespace"},
+		},
+		"ALIYUN_ANALYTICDB_NAMESPACE_PASSWORD": {
+			{ExtensionName: extensionNameAliyunAnalyticdbVectorStorage, Property: "adbpg_namespace_password"},
+		},
+		"ALIYUN_TEXT_EMBEDDING_API_KEY": {
+			{ExtensionName: extensionNameAliyunTextEmbedding, Property: "api_key"},
 		},
 		"AWS_ACCESS_KEY_ID": {
 			{ExtensionName: extensionNameBedrockLLM, Property: "access_key"},
@@ -77,6 +105,9 @@ var (
 		"ELEVENLABS_TTS_KEY": {
 			{ExtensionName: extensionNameElevenlabsTTS, Property: "api_key"},
 		},
+		"GEMINI_API_KEY": {
+			{ExtensionName: extensionNameGeminiLLM, Property: "api_key"},
+		},
 		"OPENAI_API_KEY": {
 			{ExtensionName: extensionNameOpenaiChatgpt, Property: "api_key"},
 		},
@@ -105,9 +136,6 @@ var (
 
 	// Retrieve parameters from the request and map them to the property.json file
 	startPropMap = map[string][]Prop{
-		"AgoraAsrLanguage": {
-			{ExtensionName: extensionNameAgoraRTC, Property: "agora_asr_language"},
-		},
 		"ChannelName": {
 			{ExtensionName: extensionNameAgoraRTC, Property: "channel"},
 		},
@@ -117,41 +145,8 @@ var (
 		"Token": {
 			{ExtensionName: extensionNameAgoraRTC, Property: "token"},
 		},
-		"VoiceType": {
-			{ExtensionName: extensionNameAzureTTS, Property: "azure_synthesis_voice_name"},
-			{ExtensionName: extensionNameElevenlabsTTS, Property: "voice_id"},
-		},
-	}
-
-	// Map the voice name to the voice type
-	voiceNameMap = map[string]map[string]map[string]string{
-		languageChinese: {
-			extensionNameAzureTTS: {
-				voiceTypeMale:   "zh-CN-YunxiNeural",
-				voiceTypeFemale: "zh-CN-XiaoxiaoNeural",
-			},
-			extensionNameElevenlabsTTS: {
-				voiceTypeMale:   "pNInz6obpgDQGcFmaJgB", // Adam
-				voiceTypeFemale: "Xb7hH8MSUJpSbSDYk0k2", // Alice
-			},
-			extensionNamePollyTTS: {
-				voiceTypeMale:   "Zhiyu",
-				voiceTypeFemale: "Zhiyu",
-			},
-		},
-		languageEnglish: {
-			extensionNameAzureTTS: {
-				voiceTypeMale:   "en-US-BrianNeural",
-				voiceTypeFemale: "en-US-JaneNeural",
-			},
-			extensionNameElevenlabsTTS: {
-				voiceTypeMale:   "pNInz6obpgDQGcFmaJgB", // Adam
-				voiceTypeFemale: "Xb7hH8MSUJpSbSDYk0k2", // Alice
-			},
-			extensionNamePollyTTS: {
-				voiceTypeMale:   "Matthew",
-				voiceTypeFemale: "Ruth",
-			},
+		"WorkerHttpServerPort": {
+			{ExtensionName: extensionNameHttpServer, Property: "listen_port"},
 		},
 	}
 )

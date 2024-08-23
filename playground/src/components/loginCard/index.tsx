@@ -1,13 +1,16 @@
 "use client"
 
-import { version } from "../../../package.json"
+import packageData from "../../../package.json"
 import { useRouter } from 'next/navigation'
 import { message } from "antd"
-import { ChangeEvent, InputHTMLAttributes, useState } from "react"
-import { GithubIcon,LogoIcon } from "../icons"
+import { useState } from "react"
+import { GithubIcon, LogoIcon } from "../icons"
 import { GITHUB_URL, getRandomUserId, useAppDispatch, getRandomChannel } from "@/common"
 import { setOptions } from "@/store/reducers/global"
 import styles from "./index.module.scss"
+
+
+const { version } = packageData
 
 const LoginCard = () => {
   const dispatch = useAppDispatch()
@@ -53,7 +56,7 @@ const LoginCard = () => {
     <section className={styles.content}>
       <div className={styles.title}>
         <LogoIcon transform="scale(1.5 1.5)"></LogoIcon>
-        <span className={styles.text}>Astra a multimodel voice agent</span>
+        <span className={styles.text}>Astra - a multimodal interactive agent</span>
       </div>
       <div className={styles.section}>
         <input placeholder="User Name" value={userName} onChange={onUserNameChange} ></input>
@@ -66,6 +69,9 @@ const LoginCard = () => {
       <div className={styles.version}>Version {version}</div>
     </section >
   </div >
+
+
+  return
 }
 
 export default LoginCard
