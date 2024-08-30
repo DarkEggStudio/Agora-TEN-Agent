@@ -1,4 +1,4 @@
-![Astra banner image](https://github.com/TEN-framework/docs/blob/main/assets/imgs/astra-banner.jpg?raw=true)
+![Astra banner image](https://github.com/TEN-framework/docs/blob/main/assets/imgs/astra_banner.jpg?raw=true)
 <div align="center">
 
 [![Follow on X](https://img.shields.io/twitter/follow/AstraAIAgent?logo=X&color=%20%23f5f5f5)](https://twitter.com/intent/follow?screen_name=AstraAIAgent)
@@ -33,21 +33,21 @@
 </div>
 
 <br>
-<h2>Astra - a multimodal agent</h2>
+<h2>Astra Agent</h2>
 
 [Astra multimodal agent](https://theastra.ai)
 
 Astra is a multimodal agent powered by [ TEN ](https://doc.theten.ai), demonstrating its capabilities in speech, vision, and reasoning through  RAG from local documentation.
 
-[![Showcase Astra multimodal agent](https://github.com/TEN-framework/docs/blob/main/assets/gifs/astra-voice-agent.gif?raw=true)](https://theastra.ai)
+[![Showcase Astra multimodal agent](https://github.com/TEN-framework/docs/blob/main/assets/gifs/astra_voice_agent.gif?raw=true)](https://theastra.ai)
 <br>
 <h2>How to build Astra locally
 
 ### Prerequisites
 
 #### Keys
-- Agora App ID and App Certificate([read here on how](https://docs.agora.io/en/video-calling/get-started/manage-agora-account?platform=web))
-- Azure's [speech-to-text](https://azure.microsoft.com/en-us/products/ai-services/speech-to-text) and [text-to-speech](https://azure.microsoft.com/en-us/products/ai-services/text-to-speech) API keys
+- Agora [ App ID ](https://docs.agora.io/en/video-calling/get-started/manage-agora-account?platform=web#create-an-agora-project) and [ App Certificate ](https://docs.agora.io/en/video-calling/get-started/manage-agora-account?platform=web#create-an-agora-project)(certificate is not required)
+- Azure [SST](https://azure.microsoft.com/en-us/products/ai-services/speech-to-text) and [TTS](https://azure.microsoft.com/en-us/products/ai-services/text-to-speech) API keys (feel  free to use another provider)
 - [OpenAI](https://openai.com/index/openai-api/) API key
 
 #### Installation
@@ -61,17 +61,16 @@ Astra is a multimodal agent powered by [ TEN ](https://doc.theten.ai), demonstra
 #### Docker setting on Apple Silicon
 You will need to uncheck "Use Rosetta for x86_64/amd64 emulation on Apple Silicon" option for Docker if you are on Apple Silicon, otherwise the server is not going to work.
 
-![Docker Setting](https://github.com/TEN-framework/docs/blob/main/assets/gifs/docker-setting.gif?raw=true)
+![Docker Setting](https://github.com/TEN-framework/docs/blob/main/assets/gifs/docker_setting.gif?raw=true)
 
 ### Next step
 
 #### 1. Modify config files
-In the root of the project, use the following command to create `.env` and `./agents/property.json` from the examples. 
+In the root of the project, use `cp` command to create `.env` from the example.
 
-They will be used to store information for `docker compose` later.
+It will be used to store information for `docker compose` later.
 ```bash
 cp ./.env.example ./.env
-cp ./agents/property.json.example ./agents/property.json
 ```
 
 #### 2. Setup API keys
@@ -116,34 +115,27 @@ make run-server
 ### Finish and verify 🎉
 
 #### Astra multimodal agent
-Open up http://localhost:3000 in browser to test Astra multimodal agent.
+Open up http://localhost:3000 in browser to play and test the Astra agent.
 
 #### Graph designer
 
-Open up another tab go to http://localhost:3001, and use graph designer to edit the flow and properties of any extensions.
+Open up another tab go to http://localhost:3001, and use Graph Designer to create, connect and edit extensions on canvas.
 
-![TEN Graph Designer](https://github.com/TEN-framework/docs/blob/main/assets/gifs/graph-designer.gif?raw=true)
-
-<br>
-<h2>TEN Platform</h2>
-
-Now that you’ve created your first AI agent, the creativity doesn't stop here. To develop more amazing agents, you’ll need an advanced understanding of how the TEN service works under the hood. Please refer to the [ TEN platform documentation ](https://doc.theten.ai).
+![TEN Graph Designer](https://github.com/TEN-framework/docs/blob/main/assets/gifs/graph_designer.gif?raw=true)
 
 <br>
-<h2>TEN Feature Comparison</h2>
+<h2>Astra Agent Comparison</h2>
 
 <div align="center">
 
-| **Features**                             | **TEN** | **Dify** | **LangChain** | **Flowise** |
-|:----------------------------------------:|:-------:|:--------:|:-------------:|:-----------:|
-| **Opensourced Multimodal Agent**         |   ✅    |    ❌    |      ❌       |      ❌     |
-| **Python, Go, and C++ for Extensions**   |   ✅    |    ❌    |      ❌       |      ❌     |
-| **All-in-one Package Manager**           |   ✅    |    ❌    |      ❌       |      ❌     |
-| **RTC Transportation**                   |   ✅    |    ❌    |      ❌       |      ❌     |
-| **Extension Store**                      |   ✅    |    ✅    |      ❌       |      ❌     |
-| **RAG**                                  |   ✅    |    ✅    |      ✅       |      ✅     |
-| **Workflow Builder**                     |   ✅    |    ✅    |      ✅       |      ✅     |
-| **Local Deployment**                     |   ✅    |    ✅    |      ✅       |      ✅     |
+| **Features**                             | **Astra Agent** | **Pipecat** | **LiveKit** |
+|:----------------------------------------:|:-------:|:--------:|:-------------:|
+| **Go support for extension**              |   ✅    |    ❌    |      ❌       |    
+| **C++ support for extension**             |   ✅    |    ❌    |      ❌       |    
+| **Workflow builder for extension**        |   ✅    |    ❌    |      ❌       |    
+| **RAG support**                          |   ✅    |    ❌    |      ❌       |     
+| **Python support for extension**          |   ✅    |   ✅    |      ✅       |     
+| **Open source**                          |   ✅    |     ✅     |     ✅       |    
 
 </div>
 
@@ -152,7 +144,7 @@ Now that you’ve created your first AI agent, the creativity doesn't stop here.
 
 Before we dive further, be sure to star our repository and get instant notifications for all new releases!
 
-![TEN star us gif](https://github.com/TEN-framework/docs/blob/main/assets/gifs/star-the-repo-confetti-higher-quality.gif?raw=true)
+![TEN star us gif](https://github.com/TEN-framework/docs/blob/main/assets/gifs/star_the_repo_confetti_higher_quality.gif?raw=true)
 
 <br>
 <h2>Join Community</h2>
