@@ -74,7 +74,7 @@ export const getGraphProperties = (graphName: string, language: string, voiceTyp
                 "agora_asr_language": language,
             },
             "openai_chatgpt": {
-                "model": "gpt-4o",
+                //"model": "gpt-4o",
                 ...localizationOptions
             },
             "azure_tts": {
