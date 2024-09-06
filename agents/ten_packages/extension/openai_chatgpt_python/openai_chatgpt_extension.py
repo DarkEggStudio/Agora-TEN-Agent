@@ -185,7 +185,7 @@ class OpenAIChatGPTExtension(Extension):
             return
 
         try:
-            model = ten.get_property_string(PROPERTY_API_KEY)
+            model = ten.get_property_string(PROPERTY_MODEL)
             logger.info(f"Get ENV OpenAIChatGPT model: {model}")
             if model:
                 openai_chatgpt_config.model = model
