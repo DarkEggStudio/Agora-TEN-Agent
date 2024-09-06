@@ -72,7 +72,7 @@ class OpenAIChatGPT:
 
     def get_chat_completions_stream(self, messages, tools = None):
         req = {
-            "model": self.config.model,
+            "model": "gpt-4o-mini-VoiceAI-Dev", #self.config.model,
             "messages": [
                 {
                     "role": "system",
