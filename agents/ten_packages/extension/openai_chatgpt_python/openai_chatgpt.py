@@ -58,7 +58,7 @@ class OpenAIChatGPT:
         # )
         self.client = AzureOpenAI(
             api_key=config.api_key,
-            api_version="2024-07-01-preview",
+            api_version="2024-07-18",
             azure_endpoint=config.base_url
         )
         self.session = requests.Session()
