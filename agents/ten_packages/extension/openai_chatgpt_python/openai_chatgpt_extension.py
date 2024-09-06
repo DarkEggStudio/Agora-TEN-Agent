@@ -186,7 +186,7 @@ class OpenAIChatGPTExtension(Extension):
 
         try:
             model = ten.get_property_string(PROPERTY_MODEL)
-            logger.info(f"Get ENV OpenAIChatGPT model: {model}")
+            logger.info(f"Get ENV OpenAIChatGPT model: {model}, {ten}")
             if model:
                 openai_chatgpt_config.model = model
         except Exception as err:
