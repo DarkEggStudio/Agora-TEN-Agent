@@ -170,6 +170,7 @@ class OpenAIChatGPTExtension(Extension):
 
         try:
             base_url = ten.get_property_string(PROPERTY_BASE_URL)
+            logger.info(f"Get ENV OpenAIChatGPT base_url: {base_url}")
             if base_url:
                 openai_chatgpt_config.base_url = base_url
         except Exception as err:
@@ -177,6 +178,7 @@ class OpenAIChatGPTExtension(Extension):
 
         try:
             api_key = ten.get_property_string(PROPERTY_API_KEY)
+            logger.info(f"Get ENV OpenAIChatGPT api_key: {api_key}")
             openai_chatgpt_config.api_key = api_key
         except Exception as err:
             logger.info(f"GetProperty required {PROPERTY_API_KEY} failed, err: {err}")

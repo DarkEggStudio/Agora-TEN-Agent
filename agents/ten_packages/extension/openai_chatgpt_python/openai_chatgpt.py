@@ -1,6 +1,6 @@
 import random
 import requests
-from openai import OpenAI
+from openai import OpenAI, AzureOpenAI
 from typing import List, Dict, Any, Optional
 from .log import logger
 
@@ -52,9 +52,14 @@ class OpenAIChatGPT:
     def __init__(self, config: OpenAIChatGPTConfig):
         self.config = config
         logger.info(f"OpenAIChatGPT initialized with config: {config.api_key}")
-        self.client = OpenAI(
+        # self.client = OpenAI(
+        #     api_key=config.api_key,
+        #     base_url=config.base_url
+        # )
+        self.client = AzureOpenAI(
             api_key=config.api_key,
-            base_url=config.base_url
+            api_version="2024-07-01-preview",
+            azure_endpoint=config.base_url
         )
         self.session = requests.Session()
         if config.proxy_url:

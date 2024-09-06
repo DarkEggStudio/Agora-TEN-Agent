@@ -602,7 +602,7 @@
                         "addon": "openai_chatgpt_python",
                         "name": "openai_chatgpt",
                         "property": {
-                            "base_url": "",
+                            "base_url": "$OPENAI_BASE_URL",
                             "api_key": "$OPENAI_API_KEY",
                             "frequency_penalty": 0.9,
                             "model": "gpt-4o-mini",
@@ -1411,7 +1411,7 @@
                         "addon": "openai_chatgpt_python",
                         "name": "openai_chatgpt",
                         "property": {
-                            "base_url": "",
+                            "base_url": "$OPENAI_BASE_URL",
                             "api_key": "$OPENAI_API_KEY",
                             "frequency_penalty": 0.9,
                             "model": "gpt-4o",
