@@ -1,0 +1,20 @@
+{
+  "type": "system",
+  "name": "rte_runtime_python",
+  "version": "0.4.1",
+  "language": "python",
+  "dependencies": [
+    {
+      "type": "system",
+      "name": "rte_runtime",
+      "version": "0.4.1"
+    }
+  ],
+  "publish": {
+    "include": [
+      "manifest.json",
+      "interface/**",
+      "lib/**"
+    ]
+  }
+}

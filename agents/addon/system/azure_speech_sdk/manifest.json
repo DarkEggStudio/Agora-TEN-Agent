@@ -1,0 +1,7 @@
+{
+  "type": "system",
+  "language": "cpp",
+  "name": "azure_speech_sdk",
+  "version": "1.38.0",
+  "dependencies": []
+}

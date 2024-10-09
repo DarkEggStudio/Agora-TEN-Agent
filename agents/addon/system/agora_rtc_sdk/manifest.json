@@ -1,0 +1,7 @@
+{
+  "type": "system",
+  "language": "cpp",
+  "name": "agora_rtc_sdk",
+  "version": "4.1.1-32+build316645",
+  "dependencies": []
+}

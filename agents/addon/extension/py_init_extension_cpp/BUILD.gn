@@ -1,0 +1,72 @@
+#
+#
+# Agora Real Time Engagement
+# Created by Wei Hu in 2022-11.
+# Copyright (c) 2024 Agora IO. All rights reserved.
+#
+#
+import("//exts/rte/base_options.gni")
+import("//exts/rte/rte_package.gni")
+
+config("common_config") {
+  defines = common_defines
+  include_dirs = common_includes
+  cflags = common_cflags
+  cflags_c = common_cflags_c
+  cflags_cc = common_cflags_cc
+  cflags_objc = common_cflags_objc
+  cflags_objcc = common_cflags_objcc
+  libs = common_libs
+  lib_dirs = common_lib_dirs
+  ldflags = common_ldflags
+}
+
+config("build_config") {
+  configs = [ ":common_config" ]
+
+  # 1. The `include` refers to the `include` directory in current extension.
+  # 2. The `//include` refers to the `include` directory in the base directory
+  #    of running `ag gen`.
+  # 3. The `.rte/app/include` is used in extension standalone building.
+  include_dirs = [
+    "include",
+    "//include",
+    "//include/nlohmann_json",
+    ".rte/app/include",
+  ]
+
+  lib_dirs = [
+    "lib",
+    "//lib",
+    ".rte/app/lib",
+  ]
+
+  if (is_win) {
+    libs = [
+      "rte_runtime.dll.lib",
+      "utils.dll.lib",
+    ]
+  } else {
+    libs = [
+      "rte_runtime",
+      "utils",
+    ]
+  }
+}
+
+rte_package("py_init_extension_cpp") {
+  package_type = "release"  # develop | release
+  package_kind = "extension"
+
+  manifest = "manifest.json"
+  property = "property.json"
+
+  if (package_type == "develop") {
+    # It's 'develop' package, therefore, need to build the result.
+    build_type = "shared_library"
+
+    sources = [ "src/main.cc" ]
+
+    configs = [ ":build_config" ]
+  }
+}

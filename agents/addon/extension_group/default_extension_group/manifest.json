@@ -1,0 +1,20 @@
+{
+  "type": "extension_group",
+  "name": "default_extension_group",
+  "version": "0.4.1",
+  "language": "c",
+  "dependencies": [
+    {
+      "type": "system",
+      "name": "rte_runtime",
+      "version": "0.4.1"
+    }
+  ],
+  "publish": {
+    "include": [
+      "manifest.json",
+      "property.json",
+      "lib/**"
+    ]
+  }
+}

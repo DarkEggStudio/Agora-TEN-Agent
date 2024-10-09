@@ -1,0 +1,231 @@
+{
+  "type": "extension",
+  "name": "agora_rtc",
+  "version": "0.4.0",
+  "language": "cpp",
+  "support": [],
+  "publish": {
+    "include": [
+      "manifest.json",
+      "property.json",
+      "lib/**"
+    ]
+  },
+  "dependencies": [
+    {
+      "type": "system",
+      "name": "rte_runtime",
+      "version": "0.4.0"
+    },
+    {
+      "type": "system",
+      "name": "agora_rtc_sdk",
+      "version": "4.1.1-32+build316645"
+    },
+    {
+      "type": "system",
+      "name": "azure_speech_sdk",
+      "version": "1.38.0"
+    }
+  ],
+  "api": {
+    "property": {
+      "app_id": {
+        "type": "string"
+      },
+      "token": {
+        "type": "string"
+      },
+      "channel": {
+        "type": "string"
+      },
+      "stream_id": {
+        "type": "uint32"
+      },
+      "remote_stream_id": {
+        "type": "uint32"
+      },
+      "subscribe_audio": {
+        "type": "bool"
+      },
+      "subscribe_audio_sample_rate": {
+        "type": "int32"
+      },
+      "subscribe_audio_num_of_channels": {
+        "type": "int32"
+      },
+      "publish_audio": {
+        "type": "bool"
+      },
+      "subscribe_video": {
+        "type": "bool"
+      },
+      "subscribe_video_pix_fmt": {
+        "type": "int32"
+      },
+      "publish_video": {
+        "type": "bool"
+      },
+      "publish_video_width": {
+        "type": "int32"
+      },
+      "publish_video_height": {
+        "type": "int32"
+      },
+      "publish_video_frame_rate": {
+        "type": "int32"
+      },
+      "publish_data": {
+        "type": "bool"
+      },
+      "area_code": {
+        "type": "int32"
+      },
+      "enable_agora_asr": {
+        "type": "bool"
+      },
+      "agora_asr_vendor_name": {
+        "type": "string"
+      },
+      "agora_asr_language": {
+        "type": "string"
+      },
+      "agora_asr_vendor_key": {
+        "type": "string"
+      },
+      "agora_asr_vendor_region": {
+        "type": "string"
+      },
+      "agora_asr_session_control_file_path": {
+        "type": "string"
+      },
+      "encryption_key": {
+        "type": "string"
+      },
+      "encryption_salt": {
+        "type": "string"
+      },
+      "encryption_mode": {
+        "type": "int32"
+      },
+      "sdk_log_file_path": {
+        "type": "string"
+      }
+    },
+    "cmd_in": [
+      {
+        "name": "flush"
+      }
+    ],
+    "cmd_out": [
+      {
+        "name": "on_user_joined",
+        "property": {
+          "channel": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "remote_user_id": {
+            "type": "string"
+          }
+        }
+      },
+      {
+        "name": "on_user_left",
+        "property": {
+          "channel": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "remote_user_id": {
+            "type": "string"
+          }
+        }
+      },
+      {
+        "name": "on_connection_failure",
+        "property": {
+          "channel": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "data_in": [
+      {
+        "name": "data"
+      }
+    ],
+    "data_out": [
+      {
+        "name": "text_data",
+        "property": {
+          "time": {
+            "type": "int64"
+          },
+          "duration_ms": {
+            "type": "int64"
+          },
+          "language": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "is_final": {
+            "type": "bool"
+          },
+          "stream_id": {
+            "type": "uint32"
+          },
+          "end_of_segment": {
+            "type": "bool"
+          }
+        }
+      }
+    ],
+    "pcm_frame_in": [
+      {
+        "name": "pcm_frame"
+      }
+    ],
+    "pcm_frame_out": [
+      {
+        "name": "pcm_frame",
+        "property": {
+          "channel": {
+            "type": "string"
+          },
+          "stream_id": {
+            "type": "uint32"
+          }
+        }
+      }
+    ],
+    "image_frame_in": [
+      {
+        "name": "image_frame"
+      }
+    ],
+    "image_frame_out": [
+      {
+        "name": "image_frame",
+        "property": {
+          "channel": {
+            "type": "string"
+          },
+          "stream_id": {
+            "type": "uint32"
+          }
+        }
+      }
+    ]
+  }
+}
