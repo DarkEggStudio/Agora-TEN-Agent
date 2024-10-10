@@ -7,7 +7,7 @@
 #
 import random
 import requests
-from openai import AsyncOpenAI
+from openai import AsyncOpenAI, AzureOpenAI
 from typing import List, Dict, Any, Optional
 from .log import logger
 
@@ -59,9 +59,14 @@ class OpenAIChatGPT:
     def __init__(self, config: OpenAIChatGPTConfig):
         self.config = config
         logger.info(f"OpenAIChatGPT initialized with config: {config.api_key}")
-        self.client = AsyncOpenAI(
+        # self.client = AsyncOpenAI(
+        #     api_key=config.api_key,
+        #     base_url=config.base_url
+        # )
+        self.client = AzureOpenAI(
             api_key=config.api_key,
-            base_url=config.base_url
+            api_version="2023-03-15-preview",
+            azure_endpoint=config.base_url
         )
         self.session = requests.Session()
         if config.proxy_url:
@@ -74,7 +79,7 @@ class OpenAIChatGPT:
 
     async def get_chat_completions_stream(self, messages, tools = None, listener = None):
         req = {
-            "model": self.config.model,
+            "model": "gpt-4o-mini-VoiceAI-Dev", #self.config.model,
             "messages": [
                 {
                     "role": "system",
