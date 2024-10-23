@@ -58,7 +58,8 @@ class OpenAIChatGPT:
     client = None
     def __init__(self, config: OpenAIChatGPTConfig):
         self.config = config
-        logger.info(f"OpenAIChatGPT initialized with config: {config.api_key}")
+        #logger.info(f"OpenAIChatGPT initialized with config: {config.api_key}")
+        logger.info(f"OpenAIChatGPT initialized with config: {config.api_key}, {config.base_url}, {config.model}")
         # self.client = AsyncOpenAI(
         #     api_key=config.api_key,
         #     base_url=config.base_url
