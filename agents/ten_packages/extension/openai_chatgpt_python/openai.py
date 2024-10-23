@@ -7,7 +7,7 @@
 #
 import random
 import requests
-from openai import AsyncOpenAI, AzureOpenAI
+from openai import AsyncOpenAI, AsyncAzureOpenAI, AzureOpenAI
 from typing import List, Dict, Any, Optional
 from .log import logger
 
@@ -63,7 +63,7 @@ class OpenAIChatGPT:
         #     api_key=config.api_key,
         #     base_url=config.base_url
         # )
-        self.client = AzureOpenAI(
+        self.client = AsyncAzureOpenAI(
             api_key=config.api_key,
             api_version="2023-03-15-preview",
             azure_endpoint=config.base_url
