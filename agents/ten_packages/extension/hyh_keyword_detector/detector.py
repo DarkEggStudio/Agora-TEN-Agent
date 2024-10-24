@@ -45,7 +45,7 @@ class KeywordDetector(Extension):
         threading.Thread(target=start_loop, args=[]).start()
 
         self.loop.create_task(self._process_queue(ten_env))
-        
+
         ten_env.on_start_done()
 
     def on_deinit(self, ten_env: TenEnv) -> None:
@@ -97,3 +97,15 @@ class KeywordDetector(Extension):
         except Exception as err:
             logger.warn(f"GetProperty {property_name} failed: {err}")
             return False
+
+    async def _process_queue(self, ten_env: TenEnv):
+        """Asynchronously process queue items one by one."""
+        while True:
+            # Wait for an item to be available in the queue
+            [task_type, message] = await self.queue.get()
+            try:
+                # Create a new task for the new message
+                self.current_task = asyncio.create_task(self._run_chatflow(ten_env, task_type, message, self.memory))
+                await self.current_task  # Wait for the current task to finish or be cancelled
+            except asyncio.CancelledError:
+                logger.info(f"Task cancelled: {message}")
