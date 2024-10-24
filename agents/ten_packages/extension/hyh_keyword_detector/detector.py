@@ -35,6 +35,10 @@ class KeywordDetector(Extension):
     #     super().__init__(name)
     loop = None
 
+    def on_init(self, ten_env: TenEnv) -> None:
+        logger.info("on_init")
+        ten_env.on_init_done()
+
     def on_start(self, ten_env: TenEnv) -> None:
         logger.info("KeywordDetectorExtension on_start")
 
@@ -97,6 +101,14 @@ class KeywordDetector(Extension):
         except Exception as err:
             logger.warn(f"GetProperty {property_name} failed: {err}")
             return False
+            
+    def get_property_string(data: Data, property_name: str) -> str:
+        """Helper to get string property from data with error handling."""
+        try:
+            return data.get_property_string(property_name)
+        except Exception as err:
+            logger.warn(f"GetProperty {property_name} failed: {err}")
+            return ""
 
     async def _process_queue(self, ten_env: TenEnv):
         """Asynchronously process queue items one by one."""
