@@ -36,6 +36,11 @@ class KeywordDetector(Extension):
 
     def on_start(self, ten_env: TenEnv) -> None:
         logger.info("KeywordDetectorExtension on_start")
+        ten_env.on_start_done()
+
+    def on_deinit(self, ten_env: TenEnv) -> None:
+        logger.info("on_deinit")
+        ten_env.on_deinit_done()
 
     def on_data(self, ten_env: TenEnv, data: Data) -> None:
         is_final = self.get_property_bool(data, DATA_IN_TEXT_DATA_PROPERTY_IS_FINAL)
