@@ -33,9 +33,19 @@ CMD_REALTIME_START = "start_realtime_v2v"
 class KeywordDetector(Extension):
     # def __init__(self, name: str):
     #     super().__init__(name)
+    loop = None
 
     def on_start(self, ten_env: TenEnv) -> None:
         logger.info("KeywordDetectorExtension on_start")
+
+        self.loop = asyncio.new_event_loop()
+        def start_loop():
+            asyncio.set_event_loop(self.loop)
+            self.loop.run_forever()
+        threading.Thread(target=start_loop, args=[]).start()
+
+        self.loop.create_task(self._process_queue(ten_env))
+        
         ten_env.on_start_done()
 
     def on_deinit(self, ten_env: TenEnv) -> None:
