@@ -1,0 +1,19 @@
+#
+# Keyword detector
+# Created by Hu Yuhua 2024.10.24
+# Copyright (c) 2024 Agora IO. All rights reserved.
+#
+import("//build/feature/ten_package.gni")
+
+ten_package("hyh_keyword_detector") {
+  package_kind = "extension"
+
+  resources = [
+    "__init__.py",
+    "addon.py",
+    "extension.py",
+    "log.py",
+    "manifest.json",
+    "property.json",
+  ]
+}
