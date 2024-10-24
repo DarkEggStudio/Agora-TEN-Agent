@@ -7,6 +7,7 @@ import base64
 from datetime import datetime
 from typing import Awaitable
 from functools import partial
+from collections import deque
 
 from ten import (
     # AudioFrame,
@@ -33,7 +34,9 @@ CMD_REALTIME_START = "start_realtime_v2v"
 class KeywordDetector(Extension):
     # def __init__(self, name: str):
     #     super().__init__(name)
+    memory = []
     loop = None
+    queue = AsyncQueue()
 
     def on_init(self, ten_env: TenEnv) -> None:
         logger.info("on_init")
@@ -99,7 +102,7 @@ class KeywordDetector(Extension):
         try:
             return data.get_property_bool(property_name)
         except Exception as err:
-            logger.warn(f"GetProperty {property_name} failed: {err}")
+            logger.warning(f"GetProperty {property_name} failed: {err}")
             return False
             
     def get_property_string(data: Data, property_name: str) -> str:
@@ -107,7 +110,7 @@ class KeywordDetector(Extension):
         try:
             return data.get_property_string(property_name)
         except Exception as err:
-            logger.warn(f"GetProperty {property_name} failed: {err}")
+            logger.warning(f"GetProperty {property_name} failed: {err}")
             return ""
 
     async def _process_queue(self, ten_env: TenEnv):
@@ -121,3 +124,35 @@ class KeywordDetector(Extension):
                 await self.current_task  # Wait for the current task to finish or be cancelled
             except asyncio.CancelledError:
                 logger.info(f"Task cancelled: {message}")
+                
+class AsyncQueue:
+    def __init__(self):
+        self._queue = deque()  # Use deque for efficient prepend and append
+        self._condition = asyncio.Condition()  # Use Condition to manage access
+
+    async def put(self, item, prepend=False):
+        """Add an item to the queue (prepend if specified)."""
+        async with self._condition:
+            if prepend:
+                self._queue.appendleft(item)  # Prepend item to the front
+            else:
+                self._queue.append(item)  # Append item to the back
+            self._condition.notify() 
+
+    async def get(self):
+        """Remove and return an item from the queue."""
+        async with self._condition:
+            while not self._queue:
+                await self._condition.wait()  # Wait until an item is available
+            return self._queue.popleft()  # Pop from the front of the deque
+
+    async def flush(self):
+        """Flush all items from the queue."""
+        async with self._condition:
+            while self._queue:
+                self._queue.popleft()  # Clear the queue
+            self._condition.notify_all()  # Notify all consumers that the queue is empty
+
+    def __len__(self):
+        """Return the current size of the queue."""
+        return len(self._queue)
