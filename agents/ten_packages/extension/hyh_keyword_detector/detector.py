@@ -32,11 +32,15 @@ CMD_REALTIME_PAUSE = "pause_realtime_v2v"
 CMD_REALTIME_START = "start_realtime_v2v"
 
 class KeywordDetector(Extension):
-    # def __init__(self, name: str):
-    #     super().__init__(name)
-    memory = []
-    loop = None
-    queue = AsyncQueue()
+    def __init__(self, name: str):
+        super().__init__(name)
+
+        self.loop = asyncio.new_event_loop()
+        self.thread: threading.Thread = None
+
+    # memory = []
+    # loop = None
+    # queue = AsyncQueue()
 
     def on_init(self, ten_env: TenEnv) -> None:
         logger.info("on_init")
@@ -45,11 +49,19 @@ class KeywordDetector(Extension):
     def on_start(self, ten_env: TenEnv) -> None:
         logger.info("KeywordDetectorExtension on_start")
 
-        self.loop = asyncio.new_event_loop()
-        def start_loop():
-            asyncio.set_event_loop(self.loop)
-            self.loop.run_forever()
-        threading.Thread(target=start_loop, args=[]).start()
+        def start_event_loop(loop):
+            asyncio.set_event_loop(loop)
+            loop.run_forever()
+        self.thread = threading.Thread(
+            target=start_event_loop, args=(self.loop,))
+        self.thread.start()
+        asyncio.run_coroutine_threadsafe(self._init_connection(), self.loop)
+
+        # self.loop = asyncio.new_event_loop()
+        # def start_loop():
+        #     asyncio.set_event_loop(self.loop)
+        #     self.loop.run_forever()
+        # threading.Thread(target=start_loop, args=[]).start()
 
         self.loop.create_task(self._process_queue(ten_env))
 
@@ -125,34 +137,34 @@ class KeywordDetector(Extension):
             except asyncio.CancelledError:
                 logger.info(f"Task cancelled: {message}")
                 
-class AsyncQueue:
-    def __init__(self):
-        self._queue = deque()  # Use deque for efficient prepend and append
-        self._condition = asyncio.Condition()  # Use Condition to manage access
+# class AsyncQueue:
+#     def __init__(self):
+#         self._queue = deque()  # Use deque for efficient prepend and append
+#         self._condition = asyncio.Condition()  # Use Condition to manage access
 
-    async def put(self, item, prepend=False):
-        """Add an item to the queue (prepend if specified)."""
-        async with self._condition:
-            if prepend:
-                self._queue.appendleft(item)  # Prepend item to the front
-            else:
-                self._queue.append(item)  # Append item to the back
-            self._condition.notify() 
+#     async def put(self, item, prepend=False):
+#         """Add an item to the queue (prepend if specified)."""
+#         async with self._condition:
+#             if prepend:
+#                 self._queue.appendleft(item)  # Prepend item to the front
+#             else:
+#                 self._queue.append(item)  # Append item to the back
+#             self._condition.notify() 
 
-    async def get(self):
-        """Remove and return an item from the queue."""
-        async with self._condition:
-            while not self._queue:
-                await self._condition.wait()  # Wait until an item is available
-            return self._queue.popleft()  # Pop from the front of the deque
+#     async def get(self):
+#         """Remove and return an item from the queue."""
+#         async with self._condition:
+#             while not self._queue:
+#                 await self._condition.wait()  # Wait until an item is available
+#             return self._queue.popleft()  # Pop from the front of the deque
 
-    async def flush(self):
-        """Flush all items from the queue."""
-        async with self._condition:
-            while self._queue:
-                self._queue.popleft()  # Clear the queue
-            self._condition.notify_all()  # Notify all consumers that the queue is empty
+#     async def flush(self):
+#         """Flush all items from the queue."""
+#         async with self._condition:
+#             while self._queue:
+#                 self._queue.popleft()  # Clear the queue
+#             self._condition.notify_all()  # Notify all consumers that the queue is empty
 
-    def __len__(self):
-        """Return the current size of the queue."""
-        return len(self._queue)
+#     def __len__(self):
+#         """Return the current size of the queue."""
+#         return len(self._queue)
