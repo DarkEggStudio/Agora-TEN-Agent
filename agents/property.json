@@ -2329,7 +2329,7 @@
                     },
                     {
                         "type": "extension",
-                        "extension_group": "controller",
+                        "extension_group": "transcriber",
                         "addon": "hyh_keyword_detector",
                         "name": "hyh_keyword_detector"
                     },
@@ -2376,7 +2376,7 @@
                                 "name": "text_data",
                                 "dest": [
                                     {
-                                        "extension_group": "controller",
+                                        "extension_group": "transcriber",
                                         "extension": "hyh_keyword_detector"
                                     }
                                 ]
@@ -2384,7 +2384,7 @@
                         ]
                     },
                     {
-                        "extension_group": "controller",
+                        "extension_group": "transcriber",
                         "extension": "hyh_keyword_detector",
                         "cmd": [
                             {
