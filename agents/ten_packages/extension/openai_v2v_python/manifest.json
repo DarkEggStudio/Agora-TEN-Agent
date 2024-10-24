@@ -61,6 +61,14 @@
         "name": "text_data"
       }
     ],
+    "cmd_in": [
+      {
+        "name": "pause_realtime_v2v"
+      },
+      {
+        "name": "start_realtime_v2v"
+      }
+    ],
     "cmd_out": [
       {
         "name": "flush"
