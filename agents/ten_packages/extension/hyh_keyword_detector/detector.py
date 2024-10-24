@@ -9,16 +9,16 @@ from typing import Awaitable
 from functools import partial
 
 from ten import (
-    AudioFrame,
-    VideoFrame,
+    # AudioFrame,
+    # VideoFrame,
     Extension,
     TenEnv,
     Cmd,
-    StatusCode,
-    CmdResult,
+    # StatusCode,
+    # CmdResult,
     Data,
 )
-from ten.audio_frame import AudioFrameDataFmt
+# from ten.audio_frame import AudioFrameDataFmt
 from .log import logger
 
 DATA_IN_TEXT_DATA_PROPERTY_TEXT = "text"
@@ -43,28 +43,29 @@ class KeywordDetector(Extension):
         ten_env.on_deinit_done()
 
     def on_data(self, ten_env: TenEnv, data: Data) -> None:
+        logger.info("[HYH] OnData input text")
         is_final = self.get_property_bool(data, DATA_IN_TEXT_DATA_PROPERTY_IS_FINAL)
         input_text = self.get_property_string(data, DATA_IN_TEXT_DATA_PROPERTY_TEXT)
         if not is_final:
-            logger.info("ignore non-final input")
+            logger.info("[HYH] ignore non-final input")
             return
         if not input_text:
-            logger.info("ignore empty text")
+            logger.info("[HYH] ignore empty text")
             return
 
-        logger.info(f"OnData input text: [{input_text}]")
+        logger.info(f"[HYH] OnData input text: [{input_text}]")
         # check keyword
         result = input_text.find(REALTIME_PAUSE_KEYWORD)
         if result != -1:
             # send pause cmd
-            logger.info(f"Send cmd: {CMD_REALTIME_PAUSE}")
+            logger.info(f"[HYH] Send cmd: {CMD_REALTIME_PAUSE}")
             ten_env.send_cmd(Cmd.create(CMD_REALTIME_PAUSE), None)
             return
 
         result = input_text.find(REALTIME_START_KEYWORD)
         if result != -1:
             # send start cmd
-            logger.info(f"Send cmd: {CMD_REALTIME_START}")
+            logger.info(f"[HYH] Send cmd: {CMD_REALTIME_START}")
             ten_env.send_cmd(Cmd.create(CMD_REALTIME_START), None)
             return
         pass
@@ -77,6 +78,7 @@ class KeywordDetector(Extension):
 
     def on_stop(self, ten_env: TenEnv) -> None:
         logger.info("KeywordDetectorExtension on_stop")
+        ten_env.on_stop_done()
 
     def get_property_bool(data: Data, property_name: str) -> bool:
         """Helper to get boolean property from data with error handling."""
