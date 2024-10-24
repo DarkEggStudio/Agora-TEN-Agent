@@ -52,12 +52,14 @@ class KeywordDetector(Extension):
         result = input_text.find(REALTIME_PAUSE_KEYWORD)
         if result != -1:
             # send pause cmd
+            logger.info(f"Send cmd: {CMD_REALTIME_PAUSE}")
             ten_env.send_cmd(Cmd.create(CMD_REALTIME_PAUSE), None)
             return
 
         result = input_text.find(REALTIME_START_KEYWORD)
         if result != -1:
             # send start cmd
+            logger.info(f"Send cmd: {CMD_REALTIME_START}")
             ten_env.send_cmd(Cmd.create(CMD_REALTIME_START), None)
             return
         pass

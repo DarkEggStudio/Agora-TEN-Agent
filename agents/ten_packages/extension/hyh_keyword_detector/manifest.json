@@ -16,59 +16,39 @@
       "BUILD.gn",
       "**.tent",
       "**.py",
-      "README.md",
-      "realtime/**.tent",
-      "realtime/**.py"
+      "README.md"
     ]
   },
   "api": {
-    "property": {
-      "api_key": {
-        "type": "string"
-      },
-      "temperature": {
-        "type": "float64"
-      },
-      "model": {
-        "type": "string"
-      },
-      "max_tokens": {
-        "type": "int64"
-      },
-      "system_message": {
-        "type": "string"
-      },
-      "voice": {
-        "type": "string"
-      },
-      "server_vad": {
-        "type": "bool"
-      },
-      "language": {
-        "type": "string"
-      },
-      "dump": {
-        "type": "bool"
-      }
-    },
-    "audio_frame_in": [
+    "property": {},
+    "data_in": [
       {
-        "name": "pcm_frame"
-      }
-    ],
-    "data_out": [
-      {
-        "name": "text_data"
+        "name": "text_data",
+        "property": {
+          "text": {
+            "type": "string"
+          },
+          "is_final": {
+            "type": "bool"
+          },
+          "stream_id": {
+            "type": "uint32"
+          },
+          "end_of_segment": {
+            "type": "bool"
+          }
+        }
       }
     ],
     "cmd_out": [
       {
         "name": "flush"
-      }
-    ],
-    "audio_frame_out": [
+      },
       {
-        "name": "pcm_frame"
+        "name": "pause_realtime_v2v"
+      },
+      {
+        "name": "start_realtime_v2v"
       }
     ]
   }
