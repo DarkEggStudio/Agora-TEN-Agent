@@ -30,7 +30,7 @@ REALTIME_START_KEYWORD = "Restart please"
 CMD_REALTIME_PAUSE = "pause_realtime_v2v"
 CMD_REALTIME_START = "start_realtime_v2v"
 
-class KeywordDetector(Extension)
+class KeywordDetector(Extension):
     def __init__(self, name: str):
         super().__init__(name)
 
