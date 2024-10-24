@@ -31,8 +31,8 @@ CMD_REALTIME_PAUSE = "pause_realtime_v2v"
 CMD_REALTIME_START = "start_realtime_v2v"
 
 class KeywordDetector(Extension):
-    def __init__(self, name: str):
-        super().__init__(name)
+    # def __init__(self, name: str):
+    #     super().__init__(name)
 
     def on_start(self, ten_env: TenEnv) -> None:
         logger.info("KeywordDetectorExtension on_start")
