@@ -2,7 +2,6 @@
   "type": "extension",
   "name": "hyh_keyword_detector",
   "version": "0.1.0",
-  "language": "python",
   "dependencies": [
     {
       "type": "system",
