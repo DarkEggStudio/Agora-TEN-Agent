@@ -55,7 +55,7 @@ class KeywordDetector(Extension):
         self.thread = threading.Thread(
             target=start_event_loop, args=(self.loop,))
         self.thread.start()
-        asyncio.run_coroutine_threadsafe(self._init_connection(), self.loop)
+        #asyncio.run_coroutine_threadsafe(self._init_connection(), self.loop)
 
         # self.loop = asyncio.new_event_loop()
         # def start_loop():
