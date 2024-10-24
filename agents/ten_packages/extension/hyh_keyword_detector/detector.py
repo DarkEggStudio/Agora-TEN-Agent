@@ -109,7 +109,7 @@ class KeywordDetector(Extension):
         logger.info("KeywordDetectorExtension on_stop")
         ten_env.on_stop_done()
 
-    def get_property_bool(data: Data, property_name: str) -> bool:
+    def get_property_bool(self, data: Data, property_name: str) -> bool:
         """Helper to get boolean property from data with error handling."""
         try:
             return data.get_property_bool(property_name)
@@ -117,7 +117,7 @@ class KeywordDetector(Extension):
             logger.warning(f"GetProperty {property_name} failed: {err}")
             return False
             
-    def get_property_string(data: Data, property_name: str) -> str:
+    def get_property_string(self, data: Data, property_name: str) -> str:
         """Helper to get string property from data with error handling."""
         try:
             return data.get_property_string(property_name)
