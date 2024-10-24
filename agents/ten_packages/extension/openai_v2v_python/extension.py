@@ -63,6 +63,7 @@ class Role(str, Enum):
     Assistant = "assistant"
 
 class OpenAIV2VExtension(Extension):
+    paused = False
     def __init__(self, name: str):
         super().__init__(name)
 
@@ -124,6 +125,8 @@ class OpenAIV2VExtension(Extension):
         ten_env.on_stop_done()
 
     def on_audio_frame(self, ten_env: TenEnv, audio_frame: AudioFrame) -> None:
+        if self.paused :
+            return
         try:
             stream_id = audio_frame.get_property_int("stream_id")
             #logger.debug(f"on_audio_frame {stream_id}")
@@ -157,8 +160,10 @@ class OpenAIV2VExtension(Extension):
 
         if cmd_name == CMD_REALTIME_PAUSE:
             logger.info(f"Recive cmd: {cmd_name}")
+            self.paused = True
         if cmd_name == CMD_REALTIME_START:
             logger.info(f"Recive cmd: {cmd_name}")
+            self.paused = False
 
         cmd_result = CmdResult.create(StatusCode.OK)
         ten_env.return_result(cmd_result, cmd)
