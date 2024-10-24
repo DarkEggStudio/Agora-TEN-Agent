@@ -55,6 +55,9 @@ TOOL_REGISTER_PROPERTY_NAME = "name"
 TOOL_REGISTER_PROPERTY_DESCRIPTON = "description"
 TOOL_REGISTER_PROPERTY_PARAMETERS = "parameters"
 
+CMD_REALTIME_PAUSE = "pause_realtime_v2v"
+CMD_REALTIME_START = "start_realtime_v2v"
+
 class Role(str, Enum):
     User = "user"
     Assistant = "assistant"
@@ -151,6 +154,11 @@ class OpenAIV2VExtension(Extension):
 
         if cmd_name == CMD_TOOL_REGISTER:
             self._on_tool_register(ten_env, cmd)
+
+        if cmd_name == CMD_REALTIME_PAUSE:
+            logger.info(f"Recive cmd: {cmd_name}")
+        if cmd_name == CMD_REALTIME_START:
+            logger.info(f"Recive cmd: {cmd_name}")
 
         cmd_result = CmdResult.create(StatusCode.OK)
         ten_env.return_result(cmd_result, cmd)
