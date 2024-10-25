@@ -2360,7 +2360,7 @@
                         "type": "extension",
                         "extension_group": "http_server",
                         "addon": "http_server_python",
-                        "name": "http_server",
+                        "name": "http_server_python",
                         "property": {
                             "listen_addr": "127.0.0.1",
                             "listen_port": 8080
