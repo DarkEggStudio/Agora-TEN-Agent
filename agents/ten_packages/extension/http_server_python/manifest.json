@@ -57,6 +57,12 @@
         "required": [
           "path"
         ]
+      },
+      {
+        "name": "start_realtime_v2v"
+      },
+      {
+        "name": "pause_realtime_v2v"
       }
     ]
   }
