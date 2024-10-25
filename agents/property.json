@@ -2358,6 +2358,16 @@
                     },
                     {
                         "type": "extension",
+                        "extension_group": "http_server",
+                        "addon": "http_server_python",
+                        "name": "http_server",
+                        "property": {
+                            "listen_addr": "127.0.0.1",
+                            "listen_port": 8080
+                        }
+                    },
+                    {
+                        "type": "extension",
                         "extension_group": "transcriber",
                         "addon": "message_collector",
                         "name": "message_collector"
@@ -2461,6 +2471,30 @@
                                     {
                                         "extension_group": "rtc",
                                         "extension": "agora_rtc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "extension_group": "http_server",
+                        "extension": "http_server_python",
+                        "cmd": [
+                            {
+                                "name": "start_realtime_v2v",
+                                "dest": [
+                                    {
+                                        "extension_group": "llm",
+                                        "extension": "openai_v2v_python"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "pause_realtime_v2v",
+                                "dest": [
+                                    {
+                                        "extension_group": "llm",
+                                        "extension": "openai_v2v_python"
                                     }
                                 ]
                             }
