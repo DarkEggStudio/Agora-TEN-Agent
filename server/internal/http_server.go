@@ -475,6 +475,7 @@ type VectorV2VPause struct {
 	ChannelName string 	`json:"channel_name,omitempty"`
 	CmdName 	string 	`json:"cmd_name,omitempty"`
 }
+
 func (s *HttpServer) handlerV2VPause(c *gin.Context) {
 	var req VectorV2VPause
 
@@ -514,9 +515,10 @@ func (s *HttpServer) handlerV2VPause(c *gin.Context) {
 }
 
 func (s *HttpServer) handlerV2VStart(c *gin.Context) {
+	return
 }
 
-func (s *HttpServer) handlerV2VCmd(c &gin.Context) {
+func (s *HttpServer) handlerV2VCmd(c *gin.Context) {
 	var req VectorV2VPause
 
 	if err := c.ShouldBind(&req); err != nil {
@@ -543,7 +545,7 @@ func (s *HttpServer) handlerV2VCmd(c &gin.Context) {
 			Type: "cmd",
 		},
 	})
-	
+
 	if err != nil {
 		slog.Error("handlerV2VPause update worker failed", "err", err, "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
 		s.output(c, codeErrUpdateWorkerFailed, http.StatusBadRequest)
