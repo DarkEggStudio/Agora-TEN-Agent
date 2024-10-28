@@ -519,6 +519,7 @@ func (s *HttpServer) handlerV2VStart(c *gin.Context) {
 }
 
 func (s *HttpServer) handlerV2VCmd(c *gin.Context) {
+	slog.Info("handlerV2VCmd called", logTag)
 	var req VectorV2VPause
 
 	if err := c.ShouldBind(&req); err != nil {
@@ -571,11 +572,8 @@ func (s *HttpServer) Start() {
 	r.GET("/vector/document/preset/list", s.handlerVectorDocumentPresetList)
 	r.POST("/vector/document/update", s.handlerVectorDocumentUpdate)
 	r.POST("/vector/document/upload", s.handlerVectorDocumentUpload)
-
 	// // v2v pause
-	// r.POST("/voice/pause", s.handlerV2VPause)
-	// r.POST("/voice/start", s.handlerV2VStart)
-	r.POST("/voice2voice/cmd", s.handlerV2VCmd) 
+	r.POST("/voice2voice/cmd", s.handlerV2VCmd)
 
 	slog.Info("server start", "port", s.config.Port, logTag)
 
