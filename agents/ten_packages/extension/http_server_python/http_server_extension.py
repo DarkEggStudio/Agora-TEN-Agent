@@ -68,8 +68,8 @@ class HTTPServerExtension(Extension):
         )
 
         self.server = HTTPServer(
-            # ("127.0.0.1", 8080), partial(HTTPHandler, ten)
-            (self.listen_addr, self.listen_port), partial(HTTPHandler, ten)
+            ("127.0.0.1", 8081), partial(HTTPHandler, ten)
+            # (self.listen_addr, self.listen_port), partial(HTTPHandler, ten)
         )
         self.thread = threading.Thread(target=self.server.serve_forever)
         self.thread.start()
