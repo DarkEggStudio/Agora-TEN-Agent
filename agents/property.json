@@ -2353,7 +2353,8 @@
                             "voice": "alloy",
                             "language": "en-US",
                             "server_vad": true,
-                            "dump": true
+                            "dump": true,
+                            "greeting": "TEN Agent connected. How can I help you today?"
                         }
                     },
                     {
