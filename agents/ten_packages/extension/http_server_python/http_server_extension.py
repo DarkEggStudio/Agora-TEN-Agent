@@ -67,8 +67,6 @@ class HTTPServerExtension(Extension):
             self.cmd_white_list,
         )
 
-        ten.on_start_done()
-        return
         self.server = HTTPServer(
             (self.listen_addr, self.listen_port), partial(HTTPHandler, ten)
         )
