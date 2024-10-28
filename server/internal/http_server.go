@@ -469,6 +469,92 @@ func (s *HttpServer) processProperty(req *StartReq) (propertyJsonFile string, lo
 	return
 }
 
+
+type VectorV2VPause struct {
+	RequestId   string	`json:"request_id,omitempty"`
+	ChannelName string 	`json:"channel_name,omitempty"`
+	CmdName 	string 	`json:"cmd_name,omitempty"`
+}
+func (s *HttpServer) handlerV2VPause(c *gin.Context) {
+	var req VectorV2VPause
+
+	if err := c.ShouldBind(&req); err != nil {
+		slog.Error("handlerV2VPause params invalid", "err", err, "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+		s.output(c, codeErrParamsInvalid, http.StatusBadRequest)
+		return
+	}
+
+	if strings.TrimSpace(req.ChannelName) == "" {
+		slog.Error("handlerV2VPause channel empty", "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+		s.output(c, codeErrChannelEmpty, http.StatusBadRequest)
+		return
+	}
+
+	slog.Info("handlerV2VPause start", "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+
+	// update worker
+	worker := workers.Get(req.ChannelName).(*Worker)
+	err := worker.update(&WorkerUpdateReq{
+		RequestId:   	req.RequestId,
+		ChannelName: 	req.ChannelName,
+		CmdName: 		req.CmdName,
+		Ten: &WorkerUpdateReqTen{
+			Name: "pause_realtime_v2v",
+			Type: "cmd",
+		},
+	})
+	if err != nil {
+		slog.Error("handlerV2VPause update worker failed", "err", err, "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+		s.output(c, codeErrUpdateWorkerFailed, http.StatusBadRequest)
+		return
+	}
+
+	slog.Info("handlerV2VPause end", "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+	s.output(c, codeSuccess, map[string]any{"ChannelName": req.ChannelName})
+}
+
+func (s *HttpServer) handlerV2VStart(c *gin.Context) {
+}
+
+func (s *HttpServer) handlerV2VCmd(c &gin.Context) {
+	var req VectorV2VPause
+
+	if err := c.ShouldBind(&req); err != nil {
+		slog.Error("handlerV2VPause params invalid", "err", err, "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+		s.output(c, codeErrParamsInvalid, http.StatusBadRequest)
+		return
+	}
+
+	if strings.TrimSpace(req.ChannelName) == "" {
+		slog.Error("handlerV2VPause channel empty", "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+		s.output(c, codeErrChannelEmpty, http.StatusBadRequest)
+		return
+	}
+
+	slog.Info("handlerV2VPause start", "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+	// update worker
+	worker := workers.Get(req.ChannelName).(*Worker)
+	err := worker.update(&WorkerUpdateReq{
+		RequestId:   	req.RequestId,
+		ChannelName: 	req.ChannelName,
+		CmdName: 		req.CmdName,
+		Ten: &WorkerUpdateReqTen{
+			Name: CmdName, //"pause_realtime_v2v",
+			Type: "cmd",
+		},
+	})
+	
+	if err != nil {
+		slog.Error("handlerV2VPause update worker failed", "err", err, "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+		s.output(c, codeErrUpdateWorkerFailed, http.StatusBadRequest)
+		return
+	}
+
+	slog.Info("handlerV2VPause end", "channelName", req.ChannelName, "CmdName", req.CmdName, "requestId", req.RequestId, logTag)
+	s.output(c, codeSuccess, map[string]any{"ChannelName": req.ChannelName})
+
+}
+
 func (s *HttpServer) Start() {
 	r := gin.Default()
 	r.Use(corsMiddleware())
@@ -483,6 +569,11 @@ func (s *HttpServer) Start() {
 	r.GET("/vector/document/preset/list", s.handlerVectorDocumentPresetList)
 	r.POST("/vector/document/update", s.handlerVectorDocumentUpdate)
 	r.POST("/vector/document/upload", s.handlerVectorDocumentUpload)
+
+	// // v2v pause
+	// r.POST("/voice/pause", s.handlerV2VPause)
+	// r.POST("/voice/start", s.handlerV2VStart)
+	r.POST("/voice2voice/cmd", s.handlerV2VCmd) 
 
 	slog.Info("server start", "port", s.config.Port, logTag)
 
