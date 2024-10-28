@@ -56,7 +56,7 @@ class HTTPServerExtension(Extension):
     def on_start(self, ten: TenEnv) -> None:
         self.listen_addr = ten.get_property_string("listen_addr")
         self.listen_port = ten.get_property_int("listen_port")
-        self.worker_http_server_port = ten.get_property_int(WORKER_HTTP_PORT_KEY)
+        #self.worker_http_server_port = ten.get_property_int(WORKER_HTTP_PORT_KEY)
         """
             white_list = ten.get_property_string("cmd_white_list")
             if len(white_list) > 0:
@@ -67,7 +67,7 @@ class HTTPServerExtension(Extension):
             "HTTPServerExtension on_start %s:%d, %s",
             self.listen_addr,
             self.listen_port,
-            self.worker_http_server_port,
+            #self.worker_http_server_port,
             self.cmd_white_list,
         )
 
