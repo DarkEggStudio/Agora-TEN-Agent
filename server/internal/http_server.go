@@ -498,7 +498,7 @@ func (s *HttpServer) handlerV2VPause(c *gin.Context) {
 	err := worker.update(&WorkerUpdateReq{
 		RequestId:   	req.RequestId,
 		ChannelName: 	req.ChannelName,
-		CmdName: 		req.CmdName,
+		//CmdName: 		req.CmdName,
 		Ten: &WorkerUpdateReqTen{
 			Name: "pause_realtime_v2v",
 			Type: "cmd",
@@ -539,7 +539,7 @@ func (s *HttpServer) handlerV2VCmd(c *gin.Context) {
 	err := worker.update(&WorkerUpdateReq{
 		RequestId:   	req.RequestId,
 		ChannelName: 	req.ChannelName,
-		CmdName: 		req.CmdName,
+		//CmdName: 		req.CmdName,
 		Ten: &WorkerUpdateReqTen{
 			Name: CmdName, //"pause_realtime_v2v",
 			Type: "cmd",
