@@ -542,7 +542,7 @@ func (s *HttpServer) handlerV2VCmd(c *gin.Context) {
 		ChannelName: 	req.ChannelName,
 		//CmdName: 		req.CmdName,
 		Ten: &WorkerUpdateReqTen{
-			Name: CmdName, //"pause_realtime_v2v",
+			Name: req.CmdName, //"pause_realtime_v2v",
 			Type: "cmd",
 		},
 	})
