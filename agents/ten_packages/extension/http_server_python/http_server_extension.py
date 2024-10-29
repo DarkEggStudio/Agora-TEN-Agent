@@ -56,7 +56,7 @@ class HTTPServerExtension(Extension):
     def on_start(self, ten: TenEnv) -> None:
         self.listen_addr = ten.get_property_string("listen_addr")
         self.listen_port = ten.get_property_int("listen_port")
-        self.worker_http_server_port = ten.get_property_int(WORKER_HTTP_PORT_KEY)
+        self.worker_http_server_port = self.get_property_int(tem, WORKER_HTTP_PORT_KEY)
         """
             white_list = ten.get_property_string("cmd_white_list")
             if len(white_list) > 0:
@@ -92,3 +92,11 @@ class HTTPServerExtension(Extension):
         cmd_result = CmdResult.create(StatusCode.OK)
         cmd_result.set_property_string("detail", "ok")
         ten.return_result(cmd_result, cmd)
+
+    def get_property_int(self, data: Data, property_name: str) -> int:
+        """Helper to get int property from data with error handling."""
+        try:
+            return data.get_property_int(property_name)
+        except Exception as err:
+            logger.warning(f"GetProperty {property_name} failed: {err}")
+            return 0
