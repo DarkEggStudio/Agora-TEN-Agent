@@ -67,7 +67,7 @@ class HTTPServerExtension(Extension):
             "HTTPServerExtension on_start %s:%d, %s",
             self.listen_addr,
             self.listen_port,
-            #self.worker_http_server_port,
+            self.worker_http_server_port,
             self.cmd_white_list,
         )
 
