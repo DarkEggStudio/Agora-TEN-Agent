@@ -65,7 +65,7 @@ class HTTPServerExtension(Extension):
         """
 
         logger.info(
-            "HTTPServerExtension on_start %s:%d, %s",
+            "HTTPServerExtension on_start %s:%d (%d), %s",
             self.listen_addr,
             self.listen_port,
             self.worker_http_server_port,
